@@ -7,7 +7,7 @@ tarball_dir = File.join(td, "#{filename}")
 
 remote_file(local_tarball) do
   source "http://download.librdf.org/source/#{filename}.tar.gz"
-  not_if File.exists?("/usr/local/lib/libraptor2.so")
+  not_if {File.exists?("/usr/local/lib/libraptor2.so")}
 end
 
 bash "extract, make, and install #{local_tarball}" do
