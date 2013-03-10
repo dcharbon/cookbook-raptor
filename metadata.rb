@@ -1,0 +1,6 @@
+maintainer        "ADADA, LLC"
+maintainer_email  "chef@adadabase.com"
+license           "MIT"
+description       "Installs raptor library from redland."
+version           "0.1"
+long_description  "Installs raptor library from redland."
