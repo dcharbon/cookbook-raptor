@@ -1,5 +1,11 @@
 require "tmpdir"
 
+["pkg-config", "libcurl4-openssl-dev"].each do |pkg|
+  package pkg do
+    :install
+  end
+end
+
 filename = "raptor2-#{node.raptor.version}"
 td = Dir.tmpdir
 local_tarball = File.join(td, "#{filename}.tar.gz")
@@ -19,11 +25,12 @@ bash "extract, make, and install #{local_tarball}" do
     ./configure
     make
     make install
-    cd ..
     rm -rf #{tarball_dir}
     rm #{local_tarball}
+    cd ..
     ldconfig
   EOS
+
 
   creates "/usr/local/lib/libraptor2.so"
 end
